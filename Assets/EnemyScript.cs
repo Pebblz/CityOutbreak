@@ -8,6 +8,7 @@ public class EnemyScript : MonoBehaviour
     {
         FOLLOW,
         IDLE,
+        DEAD
     }
 
 
@@ -15,7 +16,8 @@ public class EnemyScript : MonoBehaviour
     public float randomWalkDistance = 2f;
     public float distanceFromPlayerIgnore = 10f;
     public float walkingCoolDown = 4f;
-    private float initWalkingCoolDown;
+    public float initWalkingCoolDown;
+    public float targetIdlePositionX;
     GameObject player;
     public EnemyState state = EnemyState.IDLE;
 
@@ -32,8 +34,8 @@ public class EnemyScript : MonoBehaviour
         float enemyPositon = this.gameObject.transform.position.x;
 
         float distToPlayer = Mathf.Sqrt(Mathf.Pow(playerPosition, 2) + (Mathf.Pow(enemyPositon, 2)));
-
-        if(distToPlayer > distanceFromPlayerIgnore)
+        
+        if(distToPlayer - this.transform.position.x > distanceFromPlayerIgnore)
         {
             this.state = EnemyState.IDLE;
         } else
@@ -48,20 +50,20 @@ public class EnemyScript : MonoBehaviour
                 followPlayer(distToPlayer, enemyPositon, playerPosition);
                 break;
             case EnemyState.IDLE:
-                walkingCoolDown -= Time.deltaTime;
                 Idle();
                 break;
-    }
-        
+         }
+        walkingCoolDown -= Time.deltaTime;
+
     }
 
-   void followPlayer(float distToPlayer, float enemyX, float playerX)
+
+    #region StateBehaviors
+    void followPlayer(float distToPlayer, float enemyX, float playerX)
     {
         float distToMove = Time.deltaTime * distToPlayer * speed;
 
 
-        if (distToPlayer > this.distanceFromPlayerIgnore)
-            return;
         //Enemy to the right is true
         if(leftOrRightOfPlayer(enemyX, playerX))
         {
@@ -76,24 +78,44 @@ public class EnemyScript : MonoBehaviour
 
     void Idle()
     {
-        if (!(walkingCoolDown <= 0f))
-        {
+
+        if (this.transform.position.x == targetIdlePositionX)
             return;
+
+
+        float distanceToMove = 0f;
+        if (walkingCoolDown <= 0f)
+        {
+            float lowerBound = -1 * this.randomWalkDistance;
+            float upperBound = this.randomWalkDistance;
+
+            float walkDistance = Random.Range(lowerBound, upperBound);
+            distanceToMove = walkDistance * Time.deltaTime;
+            this.targetIdlePositionX = walkDistance;
+            walkingCoolDown = initWalkingCoolDown;
         }
         else
         {
-            walkingCoolDown = initWalkingCoolDown;
+            distanceToMove = targetIdlePositionX * Time.deltaTime;
+            
         }
-        float lowerBound = -1 * this.randomWalkDistance;
-        float upperBound = this.randomWalkDistance;
+    
 
-        float walkDistance = Random.Range(lowerBound, upperBound) * Time.deltaTime;
-
-        transform.Translate(new Vector3(walkDistance, 0, 0));
+        transform.Translate(new Vector3(distanceToMove, 0, 0));
     }
 
+
+    void Dead()
+    {
+        Destroy(this.gameObject);
+    }
+
+
+    #endregion
     bool leftOrRightOfPlayer(float enemyX, float playerX)
     {
         return enemyX >= playerX;
     }
+
+    
 }
