@@ -98,7 +98,7 @@ MonoBehaviour:
   Speed: 6
   JumpSpeed: 15
   Bullet: {fileID: 3940636086206067696, guid: 3cfa959301281e9429a68828f62ae0fe, type: 3}
-  Hp: 5
+  Hp: 20
   Lives: 3
   shoot: {fileID: 4309933649647681829}
 --- !u!136 &4309933649647683295

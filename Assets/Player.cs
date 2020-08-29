@@ -146,4 +146,9 @@ public class Player : MonoBehaviour
     {
         //for later
     }
+
+    public void SpringJump(int Height)
+    {
+        rb.AddForce(new Vector3(0, JumpSpeed + Height, 0), ForceMode.Impulse);
+    }
 }
