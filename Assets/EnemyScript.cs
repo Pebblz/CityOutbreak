@@ -36,11 +36,11 @@ public class EnemyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float playerPosition = player.transform.position.x;
-        float enemyPositon = this.gameObject.transform.position.x;
+        Vector3 playerPosition = new Vector3(player.transform.position.x, 0,0);
+        Vector3 enemyPositon = new Vector3(transform.position.x, 0, 0);
 
 
-        float distToPlayer = Mathf.Sqrt(Mathf.Pow(playerPosition, 2) + (Mathf.Pow(enemyPositon, 2)));
+        float distToPlayer = Vector3.Distance(enemyPositon, playerPosition);
         if (this.state != EnemyState.DEAD)
         { 
             if(distToPlayer - this.transform.position.x < distanceToShootPlayer)
@@ -60,7 +60,7 @@ public class EnemyScript : MonoBehaviour
         switch (this.state)
         {
             case EnemyState.FOLLOW:
-                followPlayer(distToPlayer, enemyPositon, playerPosition);
+                followPlayer(distToPlayer, enemyPositon.x, playerPosition.x);
                 break;
             case EnemyState.IDLE:
                 Idle();
@@ -69,9 +69,8 @@ public class EnemyScript : MonoBehaviour
                 Dead();
                 break;
             case EnemyState.SHOOT:
-                followPlayer(distToPlayer, enemyPositon, playerPosition);
-                Shoot(enemyPositon, playerPosition);
-              
+                followPlayer(distToPlayer, enemyPositon.x, playerPosition.x);
+                Shoot(enemyPositon.x, playerPosition.x);
                 break;
          }
         walkingCoolDown -= Time.deltaTime;
