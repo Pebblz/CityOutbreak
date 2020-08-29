@@ -106,9 +106,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f85f572478a275540bf016d2cbdeb189, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 5
+  force: 15
   direction: 1
-  Timer: 1
+  Timer: 3
 --- !u!54 &6022388716844447383
 Rigidbody:
   m_ObjectHideFlags: 0

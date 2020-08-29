@@ -31,8 +31,7 @@ public class LobScript : MonoBehaviour
         Timer -= Time.deltaTime;
     }
 
-
-    private void OnCollisionEnter(Collision col)
+    private void OnTriggerEnter(Collider col)
     {
         if (col.gameObject.name != "LobParticle(Clone)" && col.gameObject.tag != "Enemy")
         {
@@ -45,4 +44,5 @@ public class LobScript : MonoBehaviour
 
         }
     }
+
 }

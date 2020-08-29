@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using TMPro;
 using UnityEngine;
 
@@ -28,6 +29,10 @@ public class Player : MonoBehaviour
     bool isrunning;
     private float dashTimeout = 5f;
     Animator anim;
+    public GameObject AudioObject;
+    public AudioClip hurt;
+    public AudioClip die;
+   
     void Start()
     {
         rb = this.GetComponent<Rigidbody>();
@@ -220,14 +225,37 @@ public class Player : MonoBehaviour
     public void Take1Damage()
     {
         Hp -= 1;
+        if (Hp <= 0)
+        {
+            playDeath();
+        } else
+        {
+            playOuch();
+        }
     }
     public void Take3Damage()
     {
         Hp -= 3;
+        if (Hp <= 0)
+        {
+            playDeath();
+        }
+        else
+        {
+            playOuch();
+        }
     }
     public void Take5Damage()
     {
         Hp -= 5;
+        if (Hp <= 0)
+        {
+            playDeath();
+        }
+        else
+        {
+            playOuch();
+        }
     }
     public void GameOver()
     {
@@ -246,4 +274,24 @@ public class Player : MonoBehaviour
             Hp = 0;
         }
     }
+
+    #region SFX
+    public void playOuch()
+    {
+        var sound = Instantiate(AudioObject);
+        sound.GetComponent<AudioLoader>().clip = hurt;
+        sound.GetComponent<AudioLoader>().Load();
+        sound.GetComponent<AudioLoader>().Play();
+
+    }
+
+    public void playDeath()
+    {
+        var sound = Instantiate(AudioObject);
+        sound.GetComponent<AudioLoader>().clip = die;
+        sound.GetComponent<AudioLoader>().Load();
+        sound.GetComponent<AudioLoader>().Play();
+    }
+    #endregion
+
 }

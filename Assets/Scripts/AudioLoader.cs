@@ -11,21 +11,28 @@ public class AudioLoader : MonoBehaviour
     private bool played = false;
     private void Awake()
     {
-        GetComponent<AudioSource>().clip = clip;
+       
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(!played)
-        {
-            GetComponent<AudioSource>().Play();
-            played = true;
-        }
+   
         if (timeout <= 0f)
         {
             Destroy(this.gameObject);
         }
         timeout -= Time.deltaTime;
+    }
+
+    public void Play()
+    {
+        GetComponent<AudioSource>().Play();
+        played = true;
+    }
+
+    public void Load()
+    {
+        GetComponent<AudioSource>().clip = clip;
     }
 }
