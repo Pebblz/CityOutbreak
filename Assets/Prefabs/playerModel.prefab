@@ -329,6 +329,10 @@ MonoBehaviour:
   Hp: 20
   Lives: 3
   shoot: {fileID: 5358709268470260524}
+  AudioObject: {fileID: 7935435601220576945, guid: bef489e15180a244c9699a22db28c6f3,
+    type: 3}
+  hurt: {fileID: 8300000, guid: 17fd8f800d3d84d43b5d08741c458069, type: 3}
+  die: {fileID: 8300000, guid: 13614c0d043c4b54bacd06e7b264a1d3, type: 3}
 --- !u!114 &5358709268470260527
 MonoBehaviour:
   m_ObjectHideFlags: 0
