@@ -52,8 +52,10 @@ public class Player : MonoBehaviour
         {
             gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, 0);
         }
-        if (rb.velocity.y == 0)
+        if (Mathf.Approximately(rb.velocity.y, 0f))
         {
+            IsGrounded = true;
+        } else if (rb.velocity.y > -0.002f && rb.velocity.y <= 0f){
             IsGrounded = true;
         }
         else
