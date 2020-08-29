@@ -127,7 +127,7 @@ public class Player : MonoBehaviour
             Hp += 20;
         }
 
-        GetComponent<RepsawnEnemies>().resetEnemies();
+        GetComponent<RespawnEnemies>().resetEnemies();
         
     }
     public void Take1Damage()
