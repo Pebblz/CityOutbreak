@@ -1137,7 +1137,7 @@ MonoBehaviour:
   walkingCoolDown: 4
   initWalkingCoolDown: 0
   targetIdlePositionX: 0
-  bullet: {fileID: 4444091858599270421, guid: 01e49145c33a4b24698e567881d87cd5, type: 3}
+  bullet: {fileID: 1002058742654705814, guid: cebc9d8668e1a964087f3b7b258d9b5b, type: 3}
   state: 5
 --- !u!136 &6615729891503448864
 CapsuleCollider:

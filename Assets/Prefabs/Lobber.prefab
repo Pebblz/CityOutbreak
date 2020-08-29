@@ -612,7 +612,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1d138c435c34964eb6b5129235ba22c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lobPrefab: {fileID: 4714948094859186829, guid: 2e4fbf3584dfdfa4c8e0fac050361b74,
+  lobPrefab: {fileID: 6022388716844412980, guid: acedd09eb7f461e438da7f413c8efe4b,
     type: 3}
   ROF: 4
 --- !u!136 &2106097427

@@ -578,16 +578,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: playerModel
       objectReference: {fileID: 0}
-    - target: {fileID: 5358709268470260515, guid: 26b8aa5482c90aa4d8283e5137896a06,
-        type: 3}
-      propertyPath: m_Mass
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5358709268470260515, guid: 26b8aa5482c90aa4d8283e5137896a06,
-        type: 3}
-      propertyPath: m_CollisionDetection
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5358709268470397352, guid: 26b8aa5482c90aa4d8283e5137896a06,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1403,7 +1393,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1001 &2123878588
 PrefabInstance:
@@ -1657,7 +1647,7 @@ PrefabInstance:
     - target: {fileID: 4309933649647683291, guid: 14c4136c4c1dbf34f9ff72e55153f0ce,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4309933649647683291, guid: 14c4136c4c1dbf34f9ff72e55153f0ce,
         type: 3}
