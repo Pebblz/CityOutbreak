@@ -6,7 +6,8 @@ public class PowerupScript : MonoBehaviour
 {
     // public GameObject bullet;
     public bool spread = false;
-    public float pUpCoolDown = 2f;
+    public bool canDash = false;
+    public float dashCD = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,32 +17,21 @@ public class PowerupScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        pUpCoolDown -= Time.deltaTime;
-
-        if(pUpCoolDown <=0 )
-        {
-            spread = false;
-            this.GetComponent<Player>().Speed = 6;
-
-            pUpCoolDown = 0;
-        }
-
+        dashCD += Time.deltaTime;
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        // actually a dash not improveed speed, late change lmao
         if(other.gameObject.tag == "SpeedUp")
         {
-            SpeedUp();
-            pUpCoolDown = 4;
+            canDash = true;
             Destroy(other.gameObject);
         }
 
         if (other.gameObject.tag == "Spread")
         {
             spread = true;
-            pUpCoolDown = 4;
             Destroy(other.gameObject);
         }
 
@@ -64,10 +54,5 @@ public class PowerupScript : MonoBehaviour
         }
 
 
-    }
-
-    public void SpeedUp()
-    {
-        this.GetComponent<Player>().Speed = 10;
     }
 }

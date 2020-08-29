@@ -69,6 +69,7 @@ public class Player : MonoBehaviour
                 anim.SetBool("idle", false);
             }
             transform.position += transform.forward * Speed * Time.deltaTime;
+            //rb.AddForce(new Vector3(2, 0, 0), ForceMode.Acceleration);
             transform.eulerAngles = new Vector3(0, 90, 0);
         }
         else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
@@ -80,6 +81,7 @@ public class Player : MonoBehaviour
                 anim.SetBool("idle", false);
             }
             transform.position += transform.forward * Speed * Time.deltaTime;
+            //rb.AddForce(new Vector3(2, 0, 0), ForceMode.Acceleration);
             transform.eulerAngles = new Vector3(0, 270, 0);
         }
         else

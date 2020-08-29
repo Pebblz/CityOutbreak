@@ -12,7 +12,8 @@ public class EnemyScript : MonoBehaviour
         IDLE,
         DEAD,
         SHOOT,
-        MELEE
+        MELEE,
+        NOTHING
     }
 
 
@@ -26,7 +27,7 @@ public class EnemyScript : MonoBehaviour
     public GameObject bullet;
 
     GameObject player;
-    public EnemyState state = EnemyState.IDLE;
+    public EnemyState state = EnemyState.NOTHING;
     float Rof = .5f;
 
     void Start()
@@ -61,10 +62,10 @@ public class EnemyScript : MonoBehaviour
             {
                 this.state = EnemyState.SHOOT;
             }
-            else if (distToPlayer - this.transform.position.x > distanceFromPlayerIgnore)
-            {
-                this.state = EnemyState.IDLE;
-            }
+            //else if (distToPlayer - this.transform.position.x > distanceFromPlayerIgnore)
+            //{
+            //    this.state = EnemyState.IDLE;
+            //}
             else
             {
                 this.state = EnemyState.FOLLOW;
@@ -73,18 +74,20 @@ public class EnemyScript : MonoBehaviour
 
         switch (this.state)
         {
-            case EnemyState.FOLLOW:
-                followPlayer(distToPlayer, enemyPositon.x, playerPosition.x);
-                break;
-            case EnemyState.IDLE:
-                Idle();
-                break;
+            //case EnemyState.FOLLOW:
+            //    followPlayer(distToPlayer, enemyPositon.x, playerPosition.x);
+            //    break;
+            //case EnemyState.IDLE:
+            //    Idle();
+            //    break;
             case EnemyState.DEAD:
                 Dead();
                 break;
             case EnemyState.SHOOT:
-                followPlayer(distToPlayer, enemyPositon.x, playerPosition.x);
+               // followPlayer(distToPlayer, enemyPositon.x, playerPosition.x);
                 Shoot(enemyPositon.x, playerPosition.x);
+                break;
+            case EnemyState.NOTHING:
                 break;
          }
         walkingCoolDown -= Time.deltaTime;

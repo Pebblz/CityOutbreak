@@ -15,7 +15,7 @@ public class DripScript : MonoBehaviour
 
         if(dripTime <= 0)
         {
-            Instantiate(dripper, new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y -1, this.gameObject.transform.position.z), Quaternion.identity);
+            Instantiate(dripper, new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y - 2, this.gameObject.transform.position.z), Quaternion.identity);
             dripTime = 2f;
         }
     }
