@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
     bool IsGrounded;
     public int Hp = 5;
     public int Lives = 3;
+    public AudioSource shoot;
     void Start()
     {
         rb = this.GetComponent<Rigidbody>();
@@ -69,6 +70,7 @@ public class Player : MonoBehaviour
             {
                 GameObject bulClone = Instantiate(Bullet, this.gameObject.transform.position, Quaternion.identity);
                 bulClone.GetComponent<Rigidbody>().velocity = transform.right * 10;
+                shoot.Play();
             }
 
             else if (this.GetComponent<PowerupScript>().spread == true)
