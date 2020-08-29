@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -259,7 +260,7 @@ public class Player : MonoBehaviour
     }
     public void GameOver()
     {
-        //for later
+        SceneManager.LoadScene("Lose");
     }
 
     public void SpringJump(int Height)
