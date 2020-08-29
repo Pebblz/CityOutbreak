@@ -36,6 +36,7 @@ public class Bullet : MonoBehaviour
             if (col.gameObject.tag == "Enemy")
             {
                 col.gameObject.GetComponent<EnemyScript>().state = EnemyScript.EnemyState.DEAD;
+                Destroy(this.gameObject);
             }
         }
     }
