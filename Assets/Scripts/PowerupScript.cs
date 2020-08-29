@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class PowerupScript : MonoBehaviour
 {
-
-    public GameObject player;
-   // public GameObject bullet;
+    // public GameObject bullet;
     public bool spread = false;
     public float pUpCoolDown = 2f;
     // Start is called before the first frame update
@@ -49,11 +47,11 @@ public class PowerupScript : MonoBehaviour
 
         if(other.gameObject.tag == "HealthUp")
         {
-            player.GetComponent<Player>().Hp += 5;
+            this.GetComponent<Player>().Hp += 5;
 
-            if(player.GetComponent<Player>().Hp >= 20)
+            if(this.GetComponent<Player>().Hp >= 20)
             {
-                player.GetComponent<Player>().Hp = 20;
+                this.GetComponent<Player>().Hp = 20;
             }
 
             Destroy(other.gameObject);
@@ -61,7 +59,7 @@ public class PowerupScript : MonoBehaviour
 
         if(other.gameObject.tag  == "1up")
         {
-            player.GetComponent<Player>().Lives += 1;
+            this.GetComponent<Player>().Lives += 1;
             Destroy(other.gameObject);
         }
 
@@ -70,6 +68,6 @@ public class PowerupScript : MonoBehaviour
 
     public void SpeedUp()
     {
-        player.GetComponent<Player>().Speed = 10;
+        this.GetComponent<Player>().Speed = 10;
     }
 }
