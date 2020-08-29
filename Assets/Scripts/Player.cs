@@ -25,7 +25,7 @@ public class Player : MonoBehaviour
     public int Hp = 20;
     public int Lives = 3;
     public AudioSource shoot;
-    bool isshooting;
+    bool isrunning;
     private float dashTimeout = 5f;
     Animator anim;
     void Start()
@@ -64,21 +64,25 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.W) && IsGrounded == true || Input.GetKey(KeyCode.UpArrow) && IsGrounded == true
             || Input.GetKey(KeyCode.Z) && IsGrounded == true)
         {
-            rb.AddForce(new Vector3(0, JumpSpeed, 0), ForceMode.Impulse);
+                rb.AddForce(new Vector3(0, JumpSpeed, 0), ForceMode.Impulse);
                 anim.SetBool("jump", true);
-                
                 anim.SetBool("idle", false);
                 anim.SetBool("run", false);
-            
+                anim.SetBool("shootrun", false);
+                anim.SetBool("shootjump", false);
+                anim.SetBool("shootidle", false);
             // rb.velocity += Vector3.up * JumpSpeed;
         }
         else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
-            if (IsGrounded)
+            if (IsGrounded && isrunning == false)
             {
                 anim.SetBool("run", true);
                 anim.SetBool("jump", false);
                 anim.SetBool("idle", false);
+                anim.SetBool("shootrun", false);
+                anim.SetBool("shootjump", false);
+                anim.SetBool("shootidle", false);
             }
             transform.position += transform.forward * Speed * Time.deltaTime;
             //rb.AddForce(new Vector3(2, 0, 0), ForceMode.Acceleration);
@@ -86,11 +90,14 @@ public class Player : MonoBehaviour
         }
         else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
-            if (IsGrounded)
+            if (IsGrounded && isrunning == false)
             {
                 anim.SetBool("run", true);
                 anim.SetBool("jump", false);
                 anim.SetBool("idle", false);
+                anim.SetBool("shootrun", false);
+                anim.SetBool("shootjump", false);
+                anim.SetBool("shootidle", false);
             }
             transform.position += transform.forward * Speed * Time.deltaTime;
             //rb.AddForce(new Vector3(2, 0, 0), ForceMode.Acceleration);
@@ -102,8 +109,10 @@ public class Player : MonoBehaviour
             {
                 anim.SetBool("run", false);
                 anim.SetBool("jump", false);
-                anim.Play("idle");
-
+                anim.SetBool("idle",true);
+                anim.SetBool("shootrun", false);
+                anim.SetBool("shootjump", false);
+                anim.SetBool("shootidle", false);
             }
         }
         #endregion
@@ -117,12 +126,14 @@ public class Player : MonoBehaviour
                 bulClone.GetComponent<Rigidbody>().velocity = transform.forward * 10;
                 
 
-                if(anim.GetCurrentAnimatorStateInfo(0).IsName("idle"))
+                if(anim.GetCurrentAnimatorStateInfo(0).IsName("idle") && isrunning == false)
                 {
                     anim.SetBool("run", false);
                     anim.SetBool("jump", false);
                     anim.SetBool("idle", false);
                     anim.SetBool("shootidle", true);
+                    anim.SetBool("shootrun", false);
+                    anim.SetBool("shootjump", false);
                 }
                 if (IsGrounded == false)
                 {
@@ -130,6 +141,9 @@ public class Player : MonoBehaviour
                     anim.SetBool("jump", false);
                     anim.SetBool("idle", false);
                     anim.SetBool("shootjump", true);
+                    anim.SetBool("shootidle", false);
+                    anim.SetBool("shootrun", false);
+                    
                 }
                 if (anim.GetCurrentAnimatorStateInfo(0).IsName("run"))
                 {
@@ -137,6 +151,9 @@ public class Player : MonoBehaviour
                     anim.SetBool("jump", false);
                     anim.SetBool("idle", false);
                     anim.SetBool("shootrun", true);
+                    anim.SetBool("shootidle", false);
+                    anim.SetBool("shootjump", false);
+                    isrunning = true;
                 }
             }
 
@@ -150,6 +167,9 @@ public class Player : MonoBehaviour
 
                 GameObject bulClone3 = Instantiate((hasFireBullets) ? FireBullet : Bullet, new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y + 1, this.gameObject.transform.position.z), Quaternion.identity);
                 bulClone3.GetComponent<Rigidbody>().velocity = transform.forward * 10;
+            } else
+            {
+                isrunning = false;
             }
 
             Rof = 1f;

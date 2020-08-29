@@ -241,8 +241,8 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: idle
+  - m_ConditionMode: 2
+    m_ConditionEvent: shootjump
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102053521088738914}
@@ -266,8 +266,8 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: idle
+  - m_ConditionMode: 2
+    m_ConditionEvent: shootrun
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102053521088738914}
@@ -598,7 +598,7 @@ AnimatorStateMachine:
     m_Position: {x: 456, y: 288, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102501386348666128}
-    m_Position: {x: 924, y: 108, z: 0}
+    m_Position: {x: 840, y: 120, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102466010787468554}
     m_Position: {x: 816, y: -60, z: 0}
