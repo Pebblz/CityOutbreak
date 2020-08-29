@@ -17,11 +17,13 @@ public class Player : MonoBehaviour
     GameObject[] CheckPoint;
     GameObject curCheckPoint;
     Vector3 CheckPos;
+    public bool canDash = false;
     bool IsGrounded;
     public int Hp = 20;
     public int Lives = 3;
     public AudioSource shoot;
     bool isshooting;
+    private float dashTimeout = 5f;
     Animator anim;
     void Start()
     {
@@ -47,6 +49,13 @@ public class Player : MonoBehaviour
         }
 
 
+        if(canDash && Input.GetKey(KeyCode.LeftShift) && dashTimeout <= 0)
+        {
+            transform.Translate(Vector3.forward * 5f);
+            dashTimeout = 5f;
+        }
+
+        dashTimeout -= Time.deltaTime;
 
 
         if (Input.GetKey(KeyCode.W) && IsGrounded == true || Input.GetKey(KeyCode.UpArrow) && IsGrounded == true

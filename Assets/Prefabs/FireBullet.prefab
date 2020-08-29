@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 4444091858599270419}
   - component: {fileID: 4444091858599270420}
   - component: {fileID: 4444091858599270431}
-  - component: {fileID: 4444091858599270416}
   - component: {fileID: 114410009716023364}
   m_Layer: 0
   m_Name: FireBullet
@@ -30,8 +29,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4444091858599270421}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.85, y: 0.84, z: -0.03670779}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 3408638122964531255}
   m_Father: {fileID: 0}
@@ -111,21 +110,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 120
   m_CollisionDetection: 0
---- !u!114 &4444091858599270416
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4444091858599270421}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f85f572478a275540bf016d2cbdeb189, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  force: 15
-  direction: -1
-  Timer: 4
 --- !u!114 &114410009716023364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,17 +133,17 @@ PrefabInstance:
     - target: {fileID: 3282864395953738388, guid: 78ceb7770cdfe1948ad94fbcf070ce07,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.29
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3282864395953738388, guid: 78ceb7770cdfe1948ad94fbcf070ce07,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.84
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3282864395953738388, guid: 78ceb7770cdfe1948ad94fbcf070ce07,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.03670779
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3282864395953738388, guid: 78ceb7770cdfe1948ad94fbcf070ce07,
         type: 3}
