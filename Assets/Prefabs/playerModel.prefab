@@ -322,6 +322,10 @@ MonoBehaviour:
   Speed: 6
   JumpSpeed: 15
   Bullet: {fileID: 3940636086206067696, guid: 3cfa959301281e9429a68828f62ae0fe, type: 3}
+  FireBullet: {fileID: 4444091858599270421, guid: 01e49145c33a4b24698e567881d87cd5,
+    type: 3}
+  canDash: 0
+  hasFireBullets: 0
   Hp: 20
   Lives: 3
   shoot: {fileID: 5358709268470260524}
@@ -337,9 +341,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 351fd48e2f4cb154dae465261f19d311, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
   spread: 0
-  pUpCoolDown: 2
+  dashCD: 0
 --- !u!114 &5358709268470260525
 MonoBehaviour:
   m_ObjectHideFlags: 0

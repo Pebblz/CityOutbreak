@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -9,6 +10,7 @@ public class Player : MonoBehaviour
     public float Speed = 6;
     public float JumpSpeed = 15;
     public GameObject Bullet;
+    public GameObject FireBullet;
     float Rof = .5f;
     //just in case we would need to find out 
     //if he is grounded or not for later
@@ -18,6 +20,7 @@ public class Player : MonoBehaviour
     GameObject curCheckPoint;
     Vector3 CheckPos;
     public bool canDash = false;
+    public bool hasFireBullets = false;
     bool IsGrounded;
     public int Hp = 20;
     public int Lives = 3;
@@ -109,7 +112,7 @@ public class Player : MonoBehaviour
         {
             if (this.GetComponent<PowerupScript>().spread == false)
             {
-                GameObject bulClone = Instantiate(Bullet, this.gameObject.transform.position + new Vector3(0,1.2f,0), Quaternion.identity);
+                GameObject bulClone = Instantiate( (hasFireBullets)?FireBullet:Bullet, this.gameObject.transform.position + new Vector3(0,1.2f,0), Quaternion.identity);
                 bulClone.GetComponent<Rigidbody>().velocity = transform.forward * 10;
                 shoot.Play();
 
