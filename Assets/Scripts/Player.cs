@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
     //for the direction moving
     Vector3 moveDir;
     public float Speed = 6;
-    public float JumpSpeed = 15;
+    public float JumpSpeed = 20;
     public GameObject Bullet;
     public GameObject FireBullet;
     float Rof = .5f;
