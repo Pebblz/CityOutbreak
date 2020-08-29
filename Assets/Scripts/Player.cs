@@ -48,7 +48,10 @@ public class Player : MonoBehaviour
     void FixedUpdate()
     {
         #region Movement
-
+        if(gameObject.transform.position.z != 0)
+        {
+            gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, 0);
+        }
         if (rb.velocity.y == 0)
         {
             IsGrounded = true;
@@ -94,6 +97,7 @@ public class Player : MonoBehaviour
             }
             transform.position += transform.forward * Speed * Time.deltaTime;
             //rb.AddForce(new Vector3(2, 0, 0), ForceMode.Acceleration);
+            
             transform.eulerAngles = new Vector3(0, 90, 0);
         }
          if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
