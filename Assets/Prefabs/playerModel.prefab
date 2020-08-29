@@ -347,6 +347,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spread: 0
   dashCD: 0
+  audioObject: {fileID: 7935435601220576945, guid: bef489e15180a244c9699a22db28c6f3,
+    type: 3}
+  clip: {fileID: 8300000, guid: 73684c1494ff8264f902d70e117bd51d, type: 3}
 --- !u!114 &5358709268470260525
 MonoBehaviour:
   m_ObjectHideFlags: 0
