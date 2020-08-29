@@ -11,6 +11,7 @@ TagManager:
   - HealthUp
   - 1up
   - Spike
+  - Wall
   layers:
   - Default
   - TransparentFX
