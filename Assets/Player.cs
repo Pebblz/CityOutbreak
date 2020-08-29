@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
     //for the direction moving
     Vector3 moveDir;
     public float Speed = 6;
-    float JumpSpeed = 5;
+    float JumpSpeed = 15;
     public GameObject Bullet;
     float Rof = .5f;
     //just in case we would need to find out 
@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     GameObject[] CheckPoint;
     GameObject curCheckPoint;
     Vector3 CheckPos;
+    bool IsGrounded;
     public int Hp = 5;
     public int Lives = 3;
     void Start()
@@ -30,9 +31,16 @@ public class Player : MonoBehaviour
     void FixedUpdate()
     {
         #region Movement
-        float DistanceToTheGround = GetComponent<Collider>().bounds.extents.y;
 
-        bool IsGrounded = Physics.Raycast(transform.position, Vector3.down, DistanceToTheGround + 0.1f);
+        if (rb.velocity.y == 0)
+        {
+            IsGrounded = true;
+        }
+        else
+        {
+            IsGrounded = false;
+        }
+
 
 
 
