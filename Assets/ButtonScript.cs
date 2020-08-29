@@ -6,12 +6,6 @@ using UnityEngine.UI;
 
 public class ButtonScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -21,5 +15,10 @@ public class ButtonScript : MonoBehaviour
     public void StartGame()
     {
         SceneManager.LoadScene("Main Scene");
+    }
+
+    public void Menu()
+    {
+        SceneManager.LoadScene("Menu");
     }
 }

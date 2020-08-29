@@ -6,7 +6,7 @@ public class Player : MonoBehaviour
 {
     //for the direction moving
     Vector3 moveDir;
-    float Speed = 6;
+    public float Speed = 6;
     float JumpSpeed = 5;
     public GameObject Bullet;
     float Rof = .5f;
@@ -17,8 +17,8 @@ public class Player : MonoBehaviour
     GameObject[] CheckPoint;
     GameObject curCheckPoint;
     Vector3 CheckPos;
-    int Hp = 5;
-    int Lives = 3;
+    public int Hp = 5;
+    public int Lives = 3;
     void Start()
     {
         rb = this.GetComponent<Rigidbody>();
@@ -57,8 +57,26 @@ public class Player : MonoBehaviour
         #region BulletStuff
         if (Input.GetKey(KeyCode.Space) && Rof <= 0 || Input.GetKey(KeyCode.X) && Rof <= 0)
         {
-            GameObject bulClone = Instantiate(Bullet,this.gameObject.transform.position, Quaternion.identity);
-            bulClone.GetComponent<Rigidbody>().velocity = transform.right * 10;
+            if (this.GetComponent<PowerupScript>().spread == false)
+            {
+                GameObject bulClone = Instantiate(Bullet, this.gameObject.transform.position, Quaternion.identity);
+                bulClone.GetComponent<Rigidbody>().velocity = transform.right * 10;
+            }
+
+            else if (this.GetComponent<PowerupScript>().spread == true)
+            {
+                GameObject bulClone = Instantiate(Bullet, this.gameObject.transform.position, Quaternion.identity);
+                bulClone.GetComponent<Rigidbody>().velocity = transform.right * 10;
+
+                GameObject bulClone2 = Instantiate(Bullet, new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y + 1, this.gameObject.transform.position.z), Quaternion.identity);
+                bulClone2.GetComponent<Rigidbody>().velocity = transform.right * 10;
+
+                GameObject bulClone3 = Instantiate(Bullet, new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y - 1, this.gameObject.transform.position.z), Quaternion.identity);
+                bulClone3.GetComponent<Rigidbody>().velocity = transform.right * 10;
+
+                this.GetComponent<PowerupScript>().pUpCoolDown = 4;
+            }
+
             Rof = 1f;
         }
         
