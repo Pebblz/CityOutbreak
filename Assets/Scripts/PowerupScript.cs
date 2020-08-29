@@ -6,7 +6,6 @@ public class PowerupScript : MonoBehaviour
 {
     // public GameObject bullet;
     public bool spread = false;
-   
     public float dashCD = 0;
     // Start is called before the first frame update
     void Start()
@@ -25,7 +24,7 @@ public class PowerupScript : MonoBehaviour
         // actually a dash not improveed speed, late change lmao
         if(other.gameObject.tag == "SpeedUp")
         {
-            GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().canDash =true;
+            this.GetComponent<Player>().canDash = true;
             Destroy(other.gameObject);
         }
 
@@ -50,6 +49,12 @@ public class PowerupScript : MonoBehaviour
         if(other.gameObject.tag  == "1up")
         {
             this.GetComponent<Player>().Lives += 1;
+            Destroy(other.gameObject);
+        }
+
+        if (other.gameObject.tag == "FireUp")
+        {
+            this.GetComponent<Player>().hasFireBullets = true;
             Destroy(other.gameObject);
         }
 

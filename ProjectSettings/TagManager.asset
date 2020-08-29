@@ -12,6 +12,7 @@ TagManager:
   - 1up
   - Spike
   - Wall
+  - FireUp
   layers:
   - Default
   - TransparentFX

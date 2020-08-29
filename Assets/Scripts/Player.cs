@@ -110,11 +110,12 @@ public class Player : MonoBehaviour
         #region BulletStuff
         if (Input.GetKey(KeyCode.Space) && Rof <= 0 || Input.GetKey(KeyCode.X) && Rof <= 0)
         {
+            shoot.Play();
             if (this.GetComponent<PowerupScript>().spread == false)
             {
                 GameObject bulClone = Instantiate( (hasFireBullets)?FireBullet:Bullet, this.gameObject.transform.position + new Vector3(0,1.2f,0), Quaternion.identity);
                 bulClone.GetComponent<Rigidbody>().velocity = transform.forward * 10;
-                shoot.Play();
+                
 
                 if(anim.GetCurrentAnimatorStateInfo(0).IsName("idle"))
                 {
@@ -141,13 +142,13 @@ public class Player : MonoBehaviour
 
             else if (this.GetComponent<PowerupScript>().spread == true)
             {
-                GameObject bulClone = Instantiate(Bullet, this.gameObject.transform.position, Quaternion.identity);
+                GameObject bulClone = Instantiate((hasFireBullets) ? FireBullet : Bullet, new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y + 2, this.gameObject.transform.position.z), Quaternion.identity);
                 bulClone.GetComponent<Rigidbody>().velocity = transform.forward * 10;
 
-                GameObject bulClone2 = Instantiate(Bullet, new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y + 2, this.gameObject.transform.position.z), Quaternion.identity);
+                GameObject bulClone2 = Instantiate((hasFireBullets) ? FireBullet : Bullet, new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y + 3, this.gameObject.transform.position.z), Quaternion.identity);
                 bulClone2.GetComponent<Rigidbody>().velocity = transform.forward * 10;
 
-                GameObject bulClone3 = Instantiate(Bullet, new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y - 1, this.gameObject.transform.position.z), Quaternion.identity);
+                GameObject bulClone3 = Instantiate((hasFireBullets) ? FireBullet : Bullet, new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y + 1, this.gameObject.transform.position.z), Quaternion.identity);
                 bulClone3.GetComponent<Rigidbody>().velocity = transform.forward * 10;
             }
 
