@@ -20,12 +20,6 @@ public class DripScript : MonoBehaviour
         }
     }
 
-
-    private void OnTriggerEnter(Collider other)
-    {
-        Destroy(dripper);
-    }
-
     public void DIE()
     {
 
