@@ -20,8 +20,11 @@ public class RespawnEnemies : MonoBehaviour
         for(int i = 0; i < Enemies.Length; i++)
         {
             initialPositions[i] = Enemies[i].transform.position;
-            shootDistances[i] = Enemies[i].GetComponent<EnemyScript>().distanceToShootPlayer;
-            followDistances[i] = Enemies[i].GetComponent<EnemyScript>().distanceFromPlayerIgnore;
+            if (Enemies[i].GetComponent<EnemyScript>() != null)
+            {
+                shootDistances[i] = Enemies[i].GetComponent<EnemyScript>().distanceToShootPlayer;
+                followDistances[i] = Enemies[i].GetComponent<EnemyScript>().distanceFromPlayerIgnore;
+            }
         }
     }
 
@@ -29,11 +32,16 @@ public class RespawnEnemies : MonoBehaviour
     {
         for (int i = 0; i < Enemies.Length; i++)
         {
-            Enemies[i].GetComponent<EnemyScript>().state = EnemyScript.EnemyState.IDLE;
             Enemies[i].SetActive(true);
             Enemies[i].transform.position = initialPositions[i];
-            Enemies[i].GetComponent<EnemyScript>().distanceToShootPlayer = shootDistances[i];
-            Enemies[i].GetComponent<EnemyScript>().distanceFromPlayerIgnore = followDistances[i];
+
+
+            if (Enemies[i].GetComponent<EnemyScript>() != null)
+            {
+                Enemies[i].GetComponent<EnemyScript>().state = EnemyScript.EnemyState.IDLE;
+                Enemies[i].GetComponent<EnemyScript>().distanceToShootPlayer = shootDistances[i];
+                Enemies[i].GetComponent<EnemyScript>().distanceFromPlayerIgnore = followDistances[i];
+            }
             
         }
     }
