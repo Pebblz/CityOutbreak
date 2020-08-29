@@ -1138,6 +1138,9 @@ MonoBehaviour:
   initWalkingCoolDown: 0
   targetIdlePositionX: 0
   bullet: {fileID: 1002058742654705814, guid: cebc9d8668e1a964087f3b7b258d9b5b, type: 3}
+  audioObject: {fileID: 7935435601220576945, guid: bef489e15180a244c9699a22db28c6f3,
+    type: 3}
+  clip: {fileID: 8300000, guid: 174471d77072c9f43aaf48367f932551, type: 3}
   state: 5
 --- !u!136 &6615729891503448864
 CapsuleCollider:

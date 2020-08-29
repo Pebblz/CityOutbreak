@@ -614,6 +614,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lobPrefab: {fileID: 6022388716844412980, guid: acedd09eb7f461e438da7f413c8efe4b,
     type: 3}
+  audioObject: {fileID: 7935435601220576945, guid: bef489e15180a244c9699a22db28c6f3,
+    type: 3}
+  clip: {fileID: 8300000, guid: 174471d77072c9f43aaf48367f932551, type: 3}
   ROF: 4
 --- !u!136 &2106097427
 CapsuleCollider:

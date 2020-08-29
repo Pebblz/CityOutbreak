@@ -7,6 +7,8 @@ public class LobberEnemy : MonoBehaviour
     // Start is called before the first frame update
     public GameObject lobPrefab;
     private GameObject player;
+    public GameObject audioObject;
+    public AudioClip clip;
     public float ROF = 4f;
     private float initROF;
     void Start()
@@ -40,7 +42,10 @@ public class LobberEnemy : MonoBehaviour
     }
     public void DIE()
     {
-
+        var audio = Instantiate(audioObject);
+        audio.GetComponent<AudioLoader>().clip = this.clip;
+        audio.GetComponent<AudioLoader>().Load();
+        audio.GetComponent<AudioLoader>().Play();
         this.gameObject.SetActive(false);
     }
 

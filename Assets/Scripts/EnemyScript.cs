@@ -25,6 +25,8 @@ public class EnemyScript : MonoBehaviour
     public float initWalkingCoolDown;
     public float targetIdlePositionX;
     public GameObject bullet;
+    public GameObject audioObject;
+    public AudioClip clip;
 
     GameObject player;
     public EnemyState state = EnemyState.NOTHING;
@@ -145,7 +147,10 @@ public class EnemyScript : MonoBehaviour
 
     void Dead()
     {
-        GetComponent<AudioSource>().Play();
+        var audio = Instantiate(audioObject);
+        audio.GetComponent<AudioLoader>().clip = this.clip;
+        audio.GetComponent<AudioLoader>().Load();
+        audio.GetComponent<AudioLoader>().Play();
         this.gameObject.SetActive(false);
     }
 

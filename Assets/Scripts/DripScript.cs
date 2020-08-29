@@ -9,6 +9,8 @@ public class DripScript : MonoBehaviour
     public GameObject dripper;
     float livetime = 2;
     // Update is called once per frame
+    public GameObject audioObject;
+    public AudioClip clip;
     void Update()
     {
         dripTime -= Time.deltaTime;
@@ -22,7 +24,10 @@ public class DripScript : MonoBehaviour
 
     public void DIE()
     {
-
+        var audio = Instantiate(audioObject);
+        audio.GetComponent<AudioLoader>().clip = this.clip;
+        audio.GetComponent<AudioLoader>().Load();
+        audio.GetComponent<AudioLoader>().Play();
         this.gameObject.SetActive(false);
     }
 

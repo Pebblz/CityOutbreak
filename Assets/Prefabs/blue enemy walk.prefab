@@ -196,6 +196,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
+  audioObject: {fileID: 7935435601220576945, guid: bef489e15180a244c9699a22db28c6f3,
+    type: 3}
+  clip: {fileID: 8300000, guid: 174471d77072c9f43aaf48367f932551, type: 3}
 --- !u!136 &2051620974607626649
 CapsuleCollider:
   m_ObjectHideFlags: 0
