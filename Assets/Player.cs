@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
     //for the direction moving
     Vector3 moveDir;
     public float Speed = 6;
-    float JumpSpeed = 15;
+    public float JumpSpeed = 15;
     public GameObject Bullet;
     float Rof = .5f;
     //just in case we would need to find out 
@@ -81,8 +81,6 @@ public class Player : MonoBehaviour
 
                 GameObject bulClone3 = Instantiate(Bullet, new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y - 1, this.gameObject.transform.position.z), Quaternion.identity);
                 bulClone3.GetComponent<Rigidbody>().velocity = transform.right * 10;
-
-                this.GetComponent<PowerupScript>().pUpCoolDown = 4;
             }
 
             Rof = 1f;

@@ -24,7 +24,7 @@ public class Bullet : MonoBehaviour
             }
             if (col.gameObject.tag == "Player")
             {
-                print("Got em");
+                col.gameObject.GetComponent<Player>().Take1Damage();
             }
         }
         else
