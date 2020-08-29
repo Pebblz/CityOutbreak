@@ -24,11 +24,11 @@ public class PowerupScript : MonoBehaviour
         if(pUpCoolDown <=0 )
         {
             spread = false;
-           //speed = false;
             this.GetComponent<Player>().Speed = 6;
 
             pUpCoolDown = 0;
         }
+
     }
 
     private void OnTriggerEnter(Collider other)
