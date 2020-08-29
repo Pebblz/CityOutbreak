@@ -7,7 +7,6 @@ public class PowerupScript : MonoBehaviour
 
     public GameObject player;
    // public GameObject bullet;
-    bool speed = false;
     public bool spread = false;
     public float pUpCoolDown = 2f;
     // Start is called before the first frame update
@@ -19,17 +18,15 @@ public class PowerupScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(speed)
-        {
-            SpeedUp();
-        }
 
         pUpCoolDown -= Time.deltaTime;
 
         if(pUpCoolDown <=0 )
         {
             spread = false;
-            speed = false;
+           //speed = false;
+            this.GetComponent<Player>().Speed = 6;
+
             pUpCoolDown = 0;
         }
     }
@@ -38,19 +35,31 @@ public class PowerupScript : MonoBehaviour
     {
         if(other.gameObject.tag == "SpeedUp")
         {
-            speed = true;
+            SpeedUp();
+            pUpCoolDown = 4;
+            Destroy(other.gameObject);
         }
 
         if (other.gameObject.tag == "Spread")
         {
             spread = true;
+            pUpCoolDown = 4;
+            Destroy(other.gameObject);
         }
+
+        if(other.gameObject.tag == "HealthUp")
+        {
+            pUpCoolDown = 4;
+            Destroy(other.gameObject);
+        }
+
+        
     }
 
     public void SpeedUp()
     {
         player.GetComponent<Player>().Speed = 10;
 
-        pUpCoolDown = 4;
+        
     }
 }
