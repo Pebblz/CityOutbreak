@@ -9,6 +9,7 @@ public class AudioLoader : MonoBehaviour
     public float timeout = 4f;
     public AudioClip clip;
     private bool played = false;
+    public bool pauseBackgroundMusic = false;
     private void Awake()
     {
        
@@ -20,6 +21,8 @@ public class AudioLoader : MonoBehaviour
    
         if (timeout <= 0f)
         {
+            if(pauseBackgroundMusic)
+                GameObject.FindGameObjectWithTag("MainCamera").GetComponent<AudioSource>().Play();
             Destroy(this.gameObject);
         }
         timeout -= Time.deltaTime;
@@ -29,6 +32,14 @@ public class AudioLoader : MonoBehaviour
     {
         GetComponent<AudioSource>().Play();
         played = true;
+    }
+
+    public void PlayStopBackgroundMusic()
+    {
+        GameObject.FindGameObjectWithTag("MainCamera").GetComponent<AudioSource>().Pause();
+        GetComponent<AudioSource>().Play();
+
+
     }
 
     public void Load()

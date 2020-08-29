@@ -73,8 +73,10 @@ public class PowerupScript : MonoBehaviour
     void playSound()
     {
         var audio = Instantiate(audioObject);
+        audio.GetComponent<AudioLoader>().timeout = 3f;
         audio.GetComponent<AudioLoader>().clip = this.clip;
         audio.GetComponent<AudioLoader>().Load();
-        audio.GetComponent<AudioLoader>().Play();
+        audio.GetComponent<AudioLoader>().pauseBackgroundMusic = true ;
+        audio.GetComponent<AudioLoader>().PlayStopBackgroundMusic();
     }
 }
