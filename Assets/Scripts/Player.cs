@@ -56,6 +56,7 @@ public class Player : MonoBehaviour
         else
         {
             IsGrounded = false;
+            isrunning = false;
         }
 
 
@@ -72,17 +73,17 @@ public class Player : MonoBehaviour
             || Input.GetKey(KeyCode.Z) && IsGrounded == true)
         {
                 rb.AddForce(new Vector3(0, JumpSpeed, 0), ForceMode.Impulse);
-                anim.SetBool("jump", true);
                 anim.SetBool("idle", false);
+                anim.SetBool("jump", true);
                 anim.SetBool("run", false);
                 anim.SetBool("shootrun", false);
                 anim.SetBool("shootjump", false);
                 anim.SetBool("shootidle", false);
             // rb.velocity += Vector3.up * JumpSpeed;
         }
-        else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
-            if (IsGrounded && isrunning == false)
+            if (IsGrounded == true && isrunning == false)
             {
                 anim.SetBool("run", true);
                 anim.SetBool("jump", false);
@@ -95,9 +96,9 @@ public class Player : MonoBehaviour
             //rb.AddForce(new Vector3(2, 0, 0), ForceMode.Acceleration);
             transform.eulerAngles = new Vector3(0, 90, 0);
         }
-        else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
-            if (IsGrounded && isrunning == false)
+            if (IsGrounded == true && isrunning == false)
             {
                 anim.SetBool("run", true);
                 anim.SetBool("jump", false);
@@ -110,9 +111,9 @@ public class Player : MonoBehaviour
             //rb.AddForce(new Vector3(2, 0, 0), ForceMode.Acceleration);
             transform.eulerAngles = new Vector3(0, 270, 0);
         }
-        else
-        {
-            if (IsGrounded == true)
+            if (IsGrounded == true && rb.velocity.x == 0 || !Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.RightArrow) &&
+            !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.W)  && !Input.GetKey(KeyCode.UpArrow)
+            && !Input.GetKey(KeyCode.Z) && !Input.GetKey(KeyCode.LeftShift) && !Input.GetKey(KeyCode.Space) && !Input.GetKey(KeyCode.X))
             {
                 anim.SetBool("run", false);
                 anim.SetBool("jump", false);
@@ -121,7 +122,7 @@ public class Player : MonoBehaviour
                 anim.SetBool("shootjump", false);
                 anim.SetBool("shootidle", false);
             }
-        }
+        
         #endregion
         #region BulletStuff
         if (Input.GetKey(KeyCode.Space) && Rof <= 0 || Input.GetKey(KeyCode.X) && Rof <= 0)
@@ -210,6 +211,8 @@ public class Player : MonoBehaviour
     public void RespawnAtCheckPoint()
     {
         this.gameObject.transform.position = CheckPos;
+        IsGrounded = true;
+        isrunning = false;
         if (Hp > 0)
         {
             Hp -= 1;
