@@ -29,8 +29,13 @@ public class Bullet : MonoBehaviour
         }
         else
         {
-            if (col.gameObject.tag != "Player" && col.gameObject.name != "Bullet(Clone)" && col.gameObject.tag != "Enemy")
+            if (col.gameObject.tag != "Player" && col.gameObject.name != "Bullet(Clone)" && col.gameObject.tag != "Enemy" && col.gameObject.tag != "Breakable")
             {
+                Destroy(this.gameObject);
+            }
+            if(col.gameObject.tag == "Breakable")
+            {
+                col.gameObject.GetComponent<BlockToggleScript>().turnOff();
                 Destroy(this.gameObject);
             }
             if (col.gameObject.tag == "Enemy")

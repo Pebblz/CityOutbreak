@@ -12,6 +12,8 @@ TagManager:
   - 1up
   - Spike
   - Wall
+  - Bullet
+  - Breakable
   layers:
   - Default
   - TransparentFX
