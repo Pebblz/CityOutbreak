@@ -10,6 +10,7 @@ public class PowerupScript : MonoBehaviour
     // Start is called before the first frame update
     public GameObject audioObject;
     public AudioClip clip;
+    public GameObject DashFade, MutiFade, FireFade;
     void Start()
     {
        
@@ -27,15 +28,24 @@ public class PowerupScript : MonoBehaviour
         if(other.gameObject.tag == "SpeedUp")
         {
             this.GetComponent<Player>().canDash = true;
-            playSound();
-            Destroy(other.gameObject);
+          //  playSound();
+            DashFade.SetActive(true);
+            Vector3 temp = DashFade.transform.position;
+            DashFade.transform.position = other.gameObject.transform.position;
+            other.gameObject.transform.position = temp;
+            other.gameObject.tag = "nil";
         }
 
         if (other.gameObject.tag == "Spread")
         {
-            playSound();
+           // playSound();
             spread = true;
-            Destroy(other.gameObject);
+            MutiFade.SetActive(true);
+            Vector3 temp = MutiFade.transform.position;
+            MutiFade.transform.position = other.gameObject.transform.position;
+            other.gameObject.transform.position = temp;
+            other.gameObject.tag = "nil";
+            //Destroy(other.gameObject);
         }
 
         if(other.gameObject.tag == "HealthUp")
@@ -62,9 +72,14 @@ public class PowerupScript : MonoBehaviour
         if (other.gameObject.tag == "FireUp")
         {
             this.GetComponent<Player>().hasFireBullets = true;
-            playSound();
+          //  playSound();
+            FireFade.SetActive(true);
+            Vector3 temp = FireFade.transform.position;
+            FireFade.transform.position = other.gameObject.transform.position;
+            other.gameObject.transform.position = temp;
+            other.gameObject.tag = "nil";
 
-            Destroy(other.gameObject);
+            //Destroy(other.gameObject);
         }
 
 
