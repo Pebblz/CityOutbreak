@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Runtime.InteropServices.WindowsRuntime;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -295,4 +296,9 @@ public class Player : MonoBehaviour
     }
     #endregion
 
+
+    public bool isPlayerWinning()
+    {
+        return this.hasFireBullets && this.canDash && GetComponent<PowerupScript>().spread;
+    }
 }
