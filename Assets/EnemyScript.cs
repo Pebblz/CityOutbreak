@@ -1,5 +1,6 @@
 ﻿
 
+
 using UnityEngine;
 
 public class EnemyScript : MonoBehaviour
@@ -23,6 +24,10 @@ public class EnemyScript : MonoBehaviour
     public float initWalkingCoolDown;
     public float targetIdlePositionX;
     public GameObject bullet;
+
+    private Vector3 initPostion;
+    private float initDistFromPlayer;
+    private float initDistToShoot;
     GameObject player;
     public EnemyState state = EnemyState.IDLE;
     float Rof = .5f;
@@ -31,6 +36,10 @@ public class EnemyScript : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         initWalkingCoolDown = walkingCoolDown;
+ 
+        initDistFromPlayer = this.distanceFromPlayerIgnore;
+        initDistToShoot = distanceToShootPlayer;
+        initPostion = this.transform.position;
     }
 
     // Update is called once per frame
@@ -128,7 +137,8 @@ public class EnemyScript : MonoBehaviour
 
     void Dead()
     {
-        Destroy(this.gameObject);
+        GetComponent<AudioSource>().Play();
+        this.gameObject.SetActive(false);
     }
 
    
@@ -159,5 +169,13 @@ public class EnemyScript : MonoBehaviour
         return enemyX >= playerX;
     }
 
-    
+    public void ResetEnemy()
+    {
+        this.transform.position = initPostion;
+        this.distanceFromPlayerIgnore = initDistFromPlayer;
+        this.distanceToShootPlayer = this.initDistToShoot;
+        this.gameObject.SetActive(true);
+    }
+
+
 }
