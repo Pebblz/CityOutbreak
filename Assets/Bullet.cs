@@ -35,7 +35,19 @@ public class Bullet : MonoBehaviour
             }
             if (col.gameObject.tag == "Enemy")
             {
-                col.gameObject.GetComponent<EnemyScript>().state = EnemyScript.EnemyState.DEAD;
+
+                if (col.gameObject.GetComponent<EnemyScript>() != null)
+                {
+                    col.gameObject.GetComponent<EnemyScript>().state = EnemyScript.EnemyState.DEAD;
+                   
+                } else if( col.gameObject.GetComponent<EnemyWalk>() != null)
+                {
+                    col.gameObject.GetComponent<EnemyWalk>().DIE();
+                    
+                } else if( col.gameObject.GetComponent<LobberEnemy>() != null)
+                {
+                    col.gameObject.GetComponent<LobberEnemy>().DIE();
+                }
                 Destroy(this.gameObject);
             }
         }

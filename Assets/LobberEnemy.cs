@@ -37,4 +37,10 @@ public class LobberEnemy : MonoBehaviour
     {
         return Mathf.Sign(player.transform.position.x - this.transform.position.x);
     }
+    public void DIE()
+    {
+
+        this.gameObject.SetActive(false);
+    }
+
 }

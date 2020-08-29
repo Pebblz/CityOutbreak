@@ -24,4 +24,10 @@ public class EnemyWalk : MonoBehaviour
         if(collision.gameObject.tag == "Wall")
             this.direction *= -1f;
     }
+
+    public void DIE()
+    {
+        
+        this.gameObject.SetActive(false);
+    }
 }
