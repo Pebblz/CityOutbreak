@@ -151,4 +151,12 @@ public class Player : MonoBehaviour
     {
         rb.AddForce(new Vector3(0, JumpSpeed + Height, 0), ForceMode.Impulse);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "Spike")
+        {
+            Hp = 0;
+        }
+    }
 }
