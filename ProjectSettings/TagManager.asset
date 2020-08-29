@@ -10,11 +10,7 @@ TagManager:
   - Spread
   - HealthUp
   - 1up
-<<<<<<< HEAD
-  - Wall
-=======
   - Spike
->>>>>>> 867a8604fa209bbf7f902143e56961617b10ad5a
   layers:
   - Default
   - TransparentFX
