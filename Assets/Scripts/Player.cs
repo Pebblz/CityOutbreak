@@ -274,6 +274,12 @@ public class Player : MonoBehaviour
         if (other.gameObject.tag == "Spike")
         {
             Hp = 0;
+        } else if(other.gameObject.tag == "Win")
+        {
+            if (this.isPlayerWinning())
+            {
+                SceneManager.LoadScene("Win");
+            }
         }
     }
 

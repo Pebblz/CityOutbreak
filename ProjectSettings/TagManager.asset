@@ -16,6 +16,7 @@ TagManager:
   - Breakable
   - FireUp
   - nil
+  - Win
   layers:
   - Default
   - TransparentFX
