@@ -237,7 +237,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca26abbb0987be5449896d2411685492, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Speed: 6
   Bullet: {fileID: 3940636086206067696, guid: 3cfa959301281e9429a68828f62ae0fe, type: 3}
+  Hp: 5
+  Lives: 3
 --- !u!54 &502599135
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -521,7 +524,6 @@ GameObject:
   - component: {fileID: 1446511642}
   - component: {fileID: 1446511641}
   - component: {fileID: 1446511640}
-  - component: {fileID: 1446511644}
   - component: {fileID: 1446511643}
   m_Layer: 0
   m_Name: Main Camera
@@ -690,16 +692,3 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1446511644
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1446511639}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f49d8d08cee364249ab50d6915da34d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audio: {fileID: 0}
