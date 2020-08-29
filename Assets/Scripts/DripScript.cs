@@ -30,4 +30,10 @@ public class DripScript : MonoBehaviour
     {
         Destroy(dripper);
     }
+
+    public void DIE()
+    {
+
+        this.gameObject.SetActive(false);
+    }
 }

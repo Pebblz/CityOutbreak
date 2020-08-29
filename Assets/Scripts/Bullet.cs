@@ -48,6 +48,10 @@ public class Bullet : MonoBehaviour
                 {
                     col.gameObject.GetComponent<LobberEnemy>().DIE();
                 }
+                else if (col.gameObject.GetComponent<DripScript>() != null)
+                {
+                    col.gameObject.GetComponent<DripScript>().DIE();
+                }
                 Destroy(this.gameObject);
             }
         }
