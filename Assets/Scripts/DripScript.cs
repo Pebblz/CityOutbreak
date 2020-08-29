@@ -8,12 +8,6 @@ public class DripScript : MonoBehaviour
     public float dripTime = 2f;
     public GameObject dripper;
     float livetime = 2;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -26,14 +20,10 @@ public class DripScript : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        Destroy(dripper);
-    }
-
     public void DIE()
     {
 
         this.gameObject.SetActive(false);
     }
+
 }
