@@ -13,12 +13,16 @@ public class Bullet : MonoBehaviour
         }
         Timer -= Time.deltaTime;
     }
-    private void OnTriggerEnter(Collider col)
+    void OnTriggerEnter(Collider col)
     {
-        //col.gameObject.tag != "Enemy" ||
-        //if ( col.gameObject.tag == "Player")
-        //{
-        //    Destroy(this.gameObject);
-        //}
+       
+        if (col.gameObject.tag != "Player" && col.gameObject.name != "Bullet(Clone)" && col.gameObject.tag != "Enemy")
+        {
+            Destroy(this.gameObject);
+        } 
+        if(col.gameObject.tag == "Enemy")
+        {
+            col.gameObject.GetComponent<EnemyScript>().state = EnemyScript.EnemyState.DEAD;
+        }
     }
 }
