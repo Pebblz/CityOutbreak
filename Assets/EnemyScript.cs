@@ -33,16 +33,20 @@ public class EnemyScript : MonoBehaviour
         float playerPosition = player.transform.position.x;
         float enemyPositon = this.gameObject.transform.position.x;
 
-        float distToPlayer = Mathf.Sqrt(Mathf.Pow(playerPosition, 2) + (Mathf.Pow(enemyPositon, 2)));
-        
-        if(distToPlayer - this.transform.position.x > distanceFromPlayerIgnore)
-        {
-            this.state = EnemyState.IDLE;
-        } else
-        {
-            this.state = EnemyState.FOLLOW;
-        }
 
+        float distToPlayer = Mathf.Sqrt(Mathf.Pow(playerPosition, 2) + (Mathf.Pow(enemyPositon, 2)));
+        if (this.state != EnemyState.DEAD)
+        { 
+
+            if (distToPlayer - this.transform.position.x > distanceFromPlayerIgnore)
+            {
+                this.state = EnemyState.IDLE;
+            }
+            else
+            {
+                this.state = EnemyState.FOLLOW;
+            }
+        }
 
         switch (this.state)
         {
@@ -51,6 +55,9 @@ public class EnemyScript : MonoBehaviour
                 break;
             case EnemyState.IDLE:
                 Idle();
+                break;
+            case EnemyState.DEAD:
+                Dead();
                 break;
          }
         walkingCoolDown -= Time.deltaTime;
