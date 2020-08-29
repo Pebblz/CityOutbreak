@@ -58,7 +58,7 @@ public class EnemyScript : MonoBehaviour
             //        this.state = EnemyState.FOLLOW;
             //    }
             //}
-            if(distToPlayer - this.transform.position.x < distanceToShootPlayer)
+            if(distToPlayer - Mathf.Abs(this.transform.position.x) < distanceToShootPlayer)
             {
                 this.state = EnemyState.SHOOT;
             }
@@ -68,7 +68,7 @@ public class EnemyScript : MonoBehaviour
             //}
             else
             {
-                this.state = EnemyState.FOLLOW;
+                this.state = EnemyState.NOTHING;
             }
         }
 
