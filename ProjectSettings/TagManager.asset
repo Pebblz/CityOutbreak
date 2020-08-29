@@ -10,6 +10,7 @@ TagManager:
   - Spread
   - HealthUp
   - 1up
+  - Wall
   layers:
   - Default
   - TransparentFX
