@@ -28,7 +28,8 @@ public class LobberEnemy : MonoBehaviour
 
     public void shoot()
     {
-        var bullet = Instantiate(lobPrefab, this.transform);
+        var bullet = Instantiate(lobPrefab);
+        bullet.transform.position = new Vector3(transform.position.x, transform.position.y + 1, 0);
         bullet.GetComponent<LobScript>().direction = getDirectionMagnitudeTowardsPlayer();
 
     }

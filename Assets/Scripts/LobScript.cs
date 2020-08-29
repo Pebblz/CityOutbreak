@@ -34,13 +34,15 @@ public class LobScript : MonoBehaviour
 
     private void OnCollisionEnter(Collision col)
     {
-        if (col.gameObject.name != "Bullet(Clone)" && col.gameObject.tag != "Enemy")
+        if (col.gameObject.name != "LobParticle(Clone)" && col.gameObject.tag != "Enemy")
         {
             Destroy(this.gameObject);
         }
         if (col.gameObject.tag == "Player")
         {
             col.gameObject.GetComponent<Player>().Take3Damage();
+            Destroy(this.gameObject);
+
         }
     }
 }
