@@ -126,6 +126,9 @@ public class Player : MonoBehaviour
             Lives -= 1;
             Hp += 20;
         }
+
+        GetComponent<RepsawnEnemies>().resetEnemies();
+        
     }
     public void Take1Damage()
     {
