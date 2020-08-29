@@ -18,8 +18,9 @@ public class Player : MonoBehaviour
     GameObject curCheckPoint;
     Vector3 CheckPos;
     bool IsGrounded;
-    public int Hp = 5;
+    public int Hp = 20;
     public int Lives = 3;
+    public AudioSource shoot;
     void Start()
     {
         rb = this.GetComponent<Rigidbody>();
@@ -69,6 +70,7 @@ public class Player : MonoBehaviour
             {
                 GameObject bulClone = Instantiate(Bullet, this.gameObject.transform.position, Quaternion.identity);
                 bulClone.GetComponent<Rigidbody>().velocity = transform.right * 10;
+                shoot.Play();
             }
 
             else if (this.GetComponent<PowerupScript>().spread == true)
@@ -104,7 +106,7 @@ public class Player : MonoBehaviour
         if (Hp <= 0)
         {
             RespawnAtCheckPoint();
-            Hp += 20;
+            
         }
         if (Lives <= 0)
         {
@@ -114,7 +116,16 @@ public class Player : MonoBehaviour
     public void RespawnAtCheckPoint()
     {
         this.gameObject.transform.position = CheckPos;
-        Lives -= 1;
+        if(Hp > 0)
+        {
+            Hp -= 1;
+        }
+
+        if (Hp <= 0)
+        {
+            Lives -= 1;
+            Hp += 20;
+        }
     }
     public void Take1Damage()
     {
