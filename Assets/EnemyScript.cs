@@ -46,7 +46,17 @@ public class EnemyScript : MonoBehaviour
 
         float distToPlayer = Vector3.Distance(enemyPositon, playerPosition);
         if (this.state != EnemyState.DEAD)
-        { 
+        {
+            //int layerMask = 1 << 8;
+            //layerMask = ~layerMask;
+            //RaycastHit hit;
+            //if(!Physics.Raycast(transform.position, transform.TransformDirection(playerPosition), out hit, Mathf.Infinity, layerMask))
+            //{
+            //   if(hit.transform.gameObject.tag == "Player")
+            //    {
+            //        this.state = EnemyState.FOLLOW;
+            //    }
+            //}
             if(distToPlayer - this.transform.position.x < distanceToShootPlayer)
             {
                 this.state = EnemyState.SHOOT;
