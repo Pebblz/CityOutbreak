@@ -33,7 +33,7 @@ public class BlockToggleScript : MonoBehaviour
     public void turnOn()
     {
         this.GetComponent<MeshRenderer>().enabled = true;
-        this.GetComponent<BoxCollider>().enabled = true;
+        this.GetComponent<MeshCollider>().enabled = true;
     }
 
     public void turnOff()
@@ -41,7 +41,7 @@ public class BlockToggleScript : MonoBehaviour
         timeout = initTimeout;
         timedOut = false;
         this.GetComponent<MeshRenderer>().enabled = false;
-        this.GetComponent<BoxCollider>().enabled = false;
+        this.GetComponent<MeshCollider>().enabled = false;
     }
 
 }

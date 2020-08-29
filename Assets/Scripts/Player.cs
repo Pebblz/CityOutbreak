@@ -125,6 +125,9 @@ public class Player : MonoBehaviour
                 anim.SetBool("shootrun", false);
                 anim.SetBool("shootjump", false);
                 anim.SetBool("shootidle", false);
+
+            if (anim.GetCurrentAnimatorStateInfo(0).IsName("idle") && IsGrounded)
+                rb.velocity= new Vector3(0,0,0);
             }
         
         #endregion
