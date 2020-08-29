@@ -8,6 +8,8 @@ TagManager:
   - CheckPoint
   - SpeedUp
   - Spread
+  - HealthUp
+  - 1up
   layers:
   - Default
   - TransparentFX

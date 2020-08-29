@@ -49,17 +49,27 @@ public class PowerupScript : MonoBehaviour
 
         if(other.gameObject.tag == "HealthUp")
         {
-            pUpCoolDown = 4;
+            player.GetComponent<Player>().Hp += 5;
+
+            if(player.GetComponent<Player>().Hp >= 20)
+            {
+                player.GetComponent<Player>().Hp = 20;
+            }
+
             Destroy(other.gameObject);
         }
 
-        
+        if(other.gameObject.tag  == "1up")
+        {
+            player.GetComponent<Player>().Lives += 1;
+            Destroy(other.gameObject);
+        }
+
+
     }
 
     public void SpeedUp()
     {
         player.GetComponent<Player>().Speed = 10;
-
-        
     }
 }
