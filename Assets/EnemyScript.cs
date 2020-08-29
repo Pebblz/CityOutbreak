@@ -1,4 +1,5 @@
 ﻿
+
 using UnityEngine;
 
 public class EnemyScript : MonoBehaviour
@@ -8,18 +9,23 @@ public class EnemyScript : MonoBehaviour
     {
         FOLLOW,
         IDLE,
-        DEAD
+        DEAD,
+        SHOOT,
+        MELEE
     }
 
 
     public float speed = 1f;
     public float randomWalkDistance = 2f;
     public float distanceFromPlayerIgnore = 10f;
+    public float distanceToShootPlayer = 5f;
     public float walkingCoolDown = 4f;
     public float initWalkingCoolDown;
     public float targetIdlePositionX;
+    public GameObject bullet;
     GameObject player;
     public EnemyState state = EnemyState.IDLE;
+    float Rof = .5f;
 
     void Start()
     {
@@ -37,8 +43,11 @@ public class EnemyScript : MonoBehaviour
         float distToPlayer = Mathf.Sqrt(Mathf.Pow(playerPosition, 2) + (Mathf.Pow(enemyPositon, 2)));
         if (this.state != EnemyState.DEAD)
         { 
-
-            if (distToPlayer - this.transform.position.x > distanceFromPlayerIgnore)
+            if(distToPlayer - this.transform.position.x < distanceToShootPlayer)
+            {
+                this.state = EnemyState.SHOOT;
+            }
+            else if (distToPlayer - this.transform.position.x > distanceFromPlayerIgnore)
             {
                 this.state = EnemyState.IDLE;
             }
@@ -59,8 +68,14 @@ public class EnemyScript : MonoBehaviour
             case EnemyState.DEAD:
                 Dead();
                 break;
+            case EnemyState.SHOOT:
+                followPlayer(distToPlayer, enemyPositon, playerPosition);
+                Shoot(enemyPositon, playerPosition);
+              
+                break;
          }
         walkingCoolDown -= Time.deltaTime;
+        Rof -= Time.deltaTime;
 
     }
 
@@ -117,6 +132,27 @@ public class EnemyScript : MonoBehaviour
         Destroy(this.gameObject);
     }
 
+   
+
+    void Shoot(float enemyX, float playerX)
+    {
+        if(Rof <= 0)
+        {
+            GameObject bulClone = Instantiate(bullet, this.gameObject.transform.position, Quaternion.identity);
+            bulClone.GetComponent<Bullet>().isEnemyBullet = true;
+            if (leftOrRightOfPlayer(enemyX, playerX))
+            {
+                bulClone.GetComponent<Rigidbody>().velocity = transform.right * -10f;
+            }
+            else
+            {
+                bulClone.GetComponent<Rigidbody>().velocity = transform.right * 10f;
+            }
+            
+            Rof = 1f;
+        }
+
+    }
 
     #endregion
     bool leftOrRightOfPlayer(float enemyX, float playerX)

@@ -5,6 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     float Timer = 1;
+    public bool isEnemyBullet = false;
     void Update()
     {
         if (Timer <= 0)
@@ -15,14 +16,27 @@ public class Bullet : MonoBehaviour
     }
     void OnTriggerEnter(Collider col)
     {
-       
-        if (col.gameObject.tag != "Player" && col.gameObject.name != "Bullet(Clone)" && col.gameObject.tag != "Enemy")
+        if (isEnemyBullet)
         {
-            Destroy(this.gameObject);
-        } 
-        if(col.gameObject.tag == "Enemy")
+            if (col.gameObject.name != "Bullet(Clone)" && col.gameObject.tag != "Enemy")
+            {
+                Destroy(this.gameObject);
+            }
+            if (col.gameObject.tag == "Player")
+            {
+                print("Got em");
+            }
+        }
+        else
         {
-            col.gameObject.GetComponent<EnemyScript>().state = EnemyScript.EnemyState.DEAD;
+            if (col.gameObject.tag != "Player" && col.gameObject.name != "Bullet(Clone)" && col.gameObject.tag != "Enemy")
+            {
+                Destroy(this.gameObject);
+            }
+            if (col.gameObject.tag == "Enemy")
+            {
+                col.gameObject.GetComponent<EnemyScript>().state = EnemyScript.EnemyState.DEAD;
+            }
         }
     }
 }
